@@ -1,17 +1,54 @@
 <template>
-<div align="center" id="CreateProject">
-    nombre:         <input type="text" placeholder= "nombre" v-model="nombre"/><br/>
-    empresa:        <input type="text" placeholder= "empresa" v-model="empresa"/><br/> 
-    descripcion:    <input type="text" placeholder= "descripción" v-model="descripcion"/><br/>
-    fases:          <input type="" placeholder= "fases" v-model="fases"/><br/>
-    fecha_inicio:   <input type="text" placeholder= "dd/mm/aaaa" v-model="fecha_inicio"/><br/>
-    fecha_fin:      <input type="text" placeholder= "dd/mm/aaaa" v-model="fecha_fin"/><br/>
-    presupuesto:    <input type="number" placeholder= "presupuesto" v-model="presupuesto"/><br/>
-    encargado:      <input type="text" placeholder= "encargado" v-model="encargado"/><br/>
-    num_personas:   <input type="number" placeholder= "num. personas" v-model="num_personas"/><br/>
-    horas_estimados:<input type="number" placeholder= "horas estimadas" v-model="horas_estimados"/><br/>
-    <button v-on:click="crear_proyecto" >Crear Proyecto </button>
-  </div>
+<div align= "center"  id="CreateProject">
+
+        <body>
+            <h2 align="center">NUEVO PROYECTO </h2>
+        <table id="tabla2">
+                <tr>
+                    <td>Nombre:</td>
+                    <td><input  type="text"  placeholder= "nombre" v-model="nombre"/></td>
+                </tr>
+                <tr>
+                    <td>Empresa:</td>
+                    <td><input  type="text" placeholder= "empresa" v-model="empresa"/></td>
+                </tr>
+                <tr>
+                    <td>Descripcion:</td>
+                    <td><input type="text" placeholder= "descripción" v-model="descripcion"/></td>
+                </tr>
+                <tr>
+                    <td>Fases:</td>
+                    <td><input type="text" placeholder= "fases" v-model="fases"/></td>
+                </tr>
+                <tr>
+                    <td>Fecha de Inicio:</td>
+                    <td><input type="text" placeholder= "dd/mm/aaaa" v-model="fecha_inicio"/></td>
+                </tr>
+                <tr>
+                    <td>Fecha Fin:</td>
+                    <td><input type="text" placeholder= "dd/mm/aaaa" v-model="fecha_fin"/></td>
+                </tr>
+                <tr>
+                    <td>Presupuesto:</td>
+                    <td><input type="number" placeholder= "presupuesto" v-model="presupuesto"/></td>
+                </tr>
+                <tr>
+                    <td>Encargado:</td>
+                    <td><input type="text" placeholder= "encargado" v-model="encargado"/></td>
+                </tr>
+                <tr>
+                    <td>Numero Personas:</td>
+                    <td><input type="number" placeholder= "num. personas" v-model="num_personas"/></td>
+                </tr>
+                <tr>
+                    <td>Horas Estimadas: &nbsp;&nbsp;&nbsp;</td>
+                    <td><input type="number" placeholder= "horas estimadas" v-model="horas_estimados"/></td>
+                </tr>
+            </table>
+        </body> 
+        <button id="botoncrear" v-on:click="crear_proyecto" >Crear Proyecto </button>
+    </div>
+    
     
 </template>
 
@@ -53,7 +90,7 @@ export default {
             .then(response => {
 
                 alert("Se creó el proyecto con éxito");
-                //this.$router.push({ name:"consulta",params:{nombre: data.nombre}})
+                this.$router.push({ name:"consultanombre"})
             })
             
             .catch((error) => {
@@ -65,3 +102,54 @@ export default {
     
 }
 </script>
+
+<style>
+    #CreateProject body{
+        background-color:  #727b94;
+        padding-bottom: 6%;
+        padding-left: 5%;
+        padding-right: 5%;
+        border-radius: 50px;
+
+    }
+    #tabla2{
+        border: 0px
+    }
+
+    #CreateProject{
+        height: 100%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family:'Courier New', monospace;
+        
+    }
+
+    #CreateProject h2{
+        font-family:'Courier New', monospace;
+        font-size: 32px;
+        color: #f4f6f8;
+    }
+
+    #botoncrear{
+        font-family:'Courier New', monospace;
+        font-size: 19px;
+        color: #f4f6f8;
+        background-color: #283747;
+        border-radius: 6px;
+        align-content:"center";
+        margin-top: 5%;
+        
+    
+    }
+
+    #botoncrear:hover{
+      background-color: #a7a8aa;
+      color: white;
+    }
+
+</style>

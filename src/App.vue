@@ -6,7 +6,9 @@
     
     <nav>
       <button v-on:click="createProject" v-if="is_auth" >Crear Proyecto </button>
-      <button v-on:click="getProject" v-if="is_auth" >Consultar </button>
+      <button v-on:click="getData">Consulta Tu Proyecto </button>
+      <button v-on:click="getlista">Listado </button>
+      <button v-on:click="eliminar">Eliminar </button>
     </nav>
     
 
@@ -38,24 +40,34 @@ export default {
     }
   },
   methods: {
-  getProject: function(){
-    if(this.$route.name != "consulta"){
-      let nombre = localStorage.getItem("current_nombre")
-      this.$router.push({ name:"consulta",params:{nombre:nombre}})
-      }
-    },
+    
      createProject: function(){
      if(this.$route.name != "crear"){
        this.$router.push({name:"crear"})
       }   
-     }
+     },
+      getData: function(){
+     if(this.$route.name != "consultanombre"){
+       this.$router.push({name:"consultanombre"})
+      }   
+     },
+      getlista: function(){
+     if(this.$route.name != "listar"){
+       this.$router.push({name:"listar"})
+      }   
+     },
+      eliminar: function(){
+     if(this.$route.name != "eliminar"){
+       this.$router.push({name:"eliminar"})
+      }   
+     },
   },
   
   beforeCreate: function(){
     localStorage.setItem('current_nombre', 'campaniasalento')
     localStorage.setItem('isAuth', true)
 
-    this.$router.push({name:"consulta",params:{nombre:'campaniasalento'}})
+    this.$router.push({name:"consultanombre"})
 
   }
 }
@@ -104,7 +116,7 @@ export default {
     border: 1px solid #E5E7E9;
   }
   .main-component{
-    height: 75vh;
+    height: 100%;
     margin: 0%;
     padding: 0%;
     background: #E5E7E9 ;
